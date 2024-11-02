@@ -5,7 +5,7 @@ const database = new DatabaseSync(':memory:');
 // Execute SQL statements from strings.
 database.exec(`
   CREATE TABLE data(
-    id INTEGER AUTO_INCREMENT PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     title TEXT
   ) STRICT
 `);

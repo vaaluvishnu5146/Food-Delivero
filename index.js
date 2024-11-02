@@ -1,10 +1,19 @@
 const express = require("express");
 const { currentDate } = require('./utils/date');
 const { makeDirectory, createATextFile } = require("./utils/filesys");
-require('./sqlite');
+const FoodRouter = require('./controller/Food.controller');
+const TodoRouter = require('./controller/Todo.controller');
+// require('./sqlite');
 
 // Creating and spinning up a Node Express Server
 const WEB_SERVER = express();
+
+// Body-parser
+WEB_SERVER.use(express.json());
+
+// Routers injection
+WEB_SERVER.use('/foods', FoodRouter);
+WEB_SERVER.use('/todos', TodoRouter)
 
 /**
  * Returns a web page
@@ -33,6 +42,27 @@ WEB_SERVER.get("/about", (request, response) => {
         </head>
         <body>
              <h1>About page</h1>
+        </body>
+    </html>`)
+});
+
+/**
+ * Returns a web page with URL PARAM
+ */
+WEB_SERVER.get("/params/:paramId/:subParamId", (request, response) => {
+    console.log(request.params);
+    console.log(request.query);
+    console.log("Home path hit");
+    return response.send(`<html>
+        <head>
+            <title>Params Page</title>
+        </head>
+        <body>
+             <h1>Parameters page</h1>
+             <p>Param Id: ${request.params.paramId}</p>
+             <p>Sub Param Id: ${request.params.subParamId}</p>
+             <p>Color: ${request.query.color}</p>
+             <p>Size: ${request.query.size}</p>
         </body>
     </html>`)
 });
