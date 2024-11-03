@@ -4,6 +4,9 @@ const { makeDirectory, createATextFile } = require("./utils/filesys");
 const FoodRouter = require('./controller/Food.controller');
 const TodoRouter = require('./controller/Todo.controller');
 // require('./sqlite');
+require("./dbconfig.js")
+
+require("./model/Food.model");
 
 // Creating and spinning up a Node Express Server
 const WEB_SERVER = express();

@@ -15,6 +15,7 @@
   "dependencies": {
     "express": "^4.21.1",
     "fooddelivero": "file:",
+    "mongoose": "^8.8.0",
     "nodemon": "^3.1.7"
   }
 }
