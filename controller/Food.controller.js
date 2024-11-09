@@ -1,5 +1,6 @@
 const FoodRouter = require("express").Router();
 const { FoodModel } = require("../model/Food.model");
+
 /**
  * GET ALL THE AVAILABLE FOODS
  * METHOD = GET
